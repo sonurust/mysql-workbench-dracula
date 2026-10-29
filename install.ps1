@@ -27,8 +27,15 @@ if ($installed) {
     winget install -e --id Oracle.MySQLWorkbench --accept-package-agreements --accept-source-agreements
 }
 
-$dataDir = Get-ChildItem "C:\Program Files\MySQL\MySQL Workbench*\data" -Directory -ErrorAction SilentlyContinue | Select-Object -First 1
-if (-not $dataDir) { Write-Host "Workbench data folder not found; skipping theme." -ForegroundColor Yellow; return }
+# Find MySQL Workbench installation directory (handles versions like "8.0 CE", "8.0", etc.)
+$wbDir = Get-ChildItem "C:\Program Files\MySQL" -Directory -ErrorAction SilentlyContinue |
+    Where-Object { $_.Name -like "MySQL Workbench*" } |
+    Select-Object -First 1
+
+if (-not $wbDir) { Write-Host "MySQL Workbench folder not found in C:\Program Files\MySQL; skipping theme." -ForegroundColor Yellow; return }
+
+$dataDir = Get-ChildItem (Join-Path $wbDir.FullName "data") -Directory -ErrorAction SilentlyContinue
+if (-not $dataDir) { Write-Host "Workbench data folder not found at $($wbDir.FullName)\data; skipping theme." -ForegroundColor Yellow; return }
 
 $target = Join-Path $dataDir.FullName "code_editor.xml"
 $url    = "$RepoRaw/themes/$Theme/code_editor.xml"
