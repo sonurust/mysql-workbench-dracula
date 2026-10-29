@@ -13,13 +13,18 @@ if (-not $admin) {
     return
 }
 
-Write-Host "==> Installing/upgrading MySQL Workbench (winget)" -ForegroundColor Cyan
-if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
-    throw "winget not found. Install 'App Installer' from the Microsoft Store."
-}
-winget install -e --id Oracle.MySQLWorkbench --accept-package-agreements --accept-source-agreements
-if ($LASTEXITCODE -ne 0) {
+# Check if MySQL Workbench is already installed via winget
+$installed = winget list --id Oracle.MySQLWorkbench 2>$null | Where-Object { $_ -match "Oracle.MySQLWorkbench" }
+
+if ($installed) {
+    Write-Host "==> MySQL Workbench already installed. Checking for updates..." -ForegroundColor Cyan
     winget upgrade -e --id Oracle.MySQLWorkbench --accept-package-agreements --accept-source-agreements
+} else {
+    Write-Host "==> Installing MySQL Workbench (winget)" -ForegroundColor Cyan
+    if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
+        throw "winget not found. Install 'App Installer' from the Microsoft Store."
+    }
+    winget install -e --id Oracle.MySQLWorkbench --accept-package-agreements --accept-source-agreements
 }
 
 $dataDir = Get-ChildItem "C:\Program Files\MySQL\MySQL Workbench*\data" -Directory -ErrorAction SilentlyContinue | Select-Object -First 1
@@ -27,13 +32,20 @@ if (-not $dataDir) { Write-Host "Workbench data folder not found; skipping theme
 
 $target = Join-Path $dataDir.FullName "code_editor.xml"
 $url    = "$RepoRaw/themes/$Theme/code_editor.xml"
-try {
-    $tmp = New-TemporaryFile
-    Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $tmp
-    if (-not (Test-Path "$target.orig")) { Copy-Item $target "$target.orig" }
-    Copy-Item $tmp $target -Force
-    Write-Host "==> Applied editor theme: $Theme" -ForegroundColor Cyan
-} catch {
-    Write-Host "Theme '$Theme' not found at $url" -ForegroundColor Yellow
+
+# Check if theme already applied (by checking for .orig backup)
+if (Test-Path "$target.orig") {
+    Write-Host "==> Theme already applied (found code_editor.xml.orig). Skipping." -ForegroundColor Cyan
+    Write-Host "    To re-apply, remove $target.orig and re-run." -ForegroundColor Gray
+} else {
+    try {
+        $tmp = New-TemporaryFile
+        Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $tmp
+        Copy-Item $target "$target.orig"
+        Copy-Item $tmp $target -Force
+        Write-Host "==> Applied editor theme: $Theme" -ForegroundColor Cyan
+    } catch {
+        Write-Host "Theme '$Theme' not found at $url" -ForegroundColor Yellow
+    }
 }
 Write-Host "Done. Restart MySQL Workbench."
