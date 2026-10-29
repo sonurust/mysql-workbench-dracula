@@ -1,27 +1,45 @@
-# Dracula for [MySQL Workbench](https://www.mysql.com/products/workbench/)
+# MySQL Workbench – easy install + themes
 
-> A dark theme for [MySQL Workbench](https://www.mysql.com/products/workbench/)
+## Install (latest version)
 
-![Screenshot](./screenshot.png)
+**macOS / Linux**
+```bash
+curl -fsSL https://raw.githubusercontent.com/sonurust/mysql-workbench/main/install.sh | bash
+```
 
-## Install
+**Windows (PowerShell as Administrator)**
+```powershell
+irm https://raw.githubusercontent.com/sonurust/mysql-workbench/main/install.ps1 | iex
+```
 
-All instructions can be found at [draculatheme.com/mysql-workbench](https://draculatheme.com/mysql-workbench).
+## Pick a theme
 
-## Team
+```bash
+curl -fsSL https://raw.githubusercontent.com/sonurust/mysql-workbench/main/install.sh | THEME=dracula bash
+```
+```powershell
+$env:THEME="dracula"; irm https://raw.githubusercontent.com/sonurust/mysql-workbench/main/install.ps1 | iex
+```
 
-This theme is maintained by the following person(s) and a bunch of [awesome contributors](https://github.com/dracula/mysql-workbench/graphs/contributors).
+Default theme is `dark`.
 
-| [![Michael Caxias Draw](https://avatars.githubusercontent.com/u/79621661?s=96&v=4)](https://github.com/michaelcaxias) |
-| --------------------------------------------------------------------------------------------------------------------- |
-| [Michael Caxias](https://github.com/michaelcaxias)                                                                    |
+## Add a new theme
 
-## Community
+1. Create `themes/<name>/code_editor.xml` (copy the original from your Workbench
+   `data/` folder, then change the colors).
+2. Commit and push. Users run the install command with `THEME=<name>`.
 
-- [Twitter](https://twitter.com/draculatheme) - Best for getting updates about themes and new stuff.
-- [GitHub](https://github.com/dracula/dracula-theme/discussions) - Best for asking questions and discussing issues.
-- [Discord](https://draculatheme.com/discord-invite) - Best for hanging out with the community.
+## Restore the original
 
-## License
+The installer saves `code_editor.xml.orig` next to the file it replaces. Copy it back to undo.
 
-[MIT License](./LICENSE)
+## Layout
+
+```
+install.sh
+install.ps1
+themes/
+  dark/code_editor.xml
+  dracula/code_editor.xml
+  ...
+```
