@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # MySQL Workbench one-line installer (macOS + Linux) with theme support.
-#   curl -fsSL https://raw.githubusercontent.com/sonurust/mysql-workbench/main/install.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/sonurust/mysql-workbench/master/install.sh | bash
 #   curl -fsSL .../install.sh | THEME=dracula bash
 set -euo pipefail
 
-REPO_RAW="${REPO_RAW:-https://raw.githubusercontent.com/sonurust/mysql-workbench/main}"
+REPO_RAW="${REPO_RAW:-https://raw.githubusercontent.com/sonurust/mysql-workbench/master}"
 THEME="${THEME:-dark}"
 SUDO=""; [ "$(id -u)" -ne 0 ] && SUDO="sudo"
 

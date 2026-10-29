@@ -1,9 +1,9 @@
 # MySQL Workbench one-line installer (Windows) with theme support.
-#   irm https://raw.githubusercontent.com/sonurust/mysql-workbench/main/install.ps1 | iex
-#   $env:THEME="dracula"; irm https://raw.githubusercontent.com/sonurust/mysql-workbench/main/install.ps1 | iex
+#   irm https://raw.githubusercontent.com/sonurust/mysql-workbench/master/install.ps1 | iex
+#   $env:THEME="dracula"; irm https://raw.githubusercontent.com/sonurust/mysql-workbench/master/install.ps1 | iex
 $ErrorActionPreference = "Stop"
 
-$RepoRaw = if ($env:REPO_RAW) { $env:REPO_RAW } else { "https://raw.githubusercontent.com/sonurust/mysql-workbench/main" }
+$RepoRaw = if ($env:REPO_RAW) { $env:REPO_RAW } else { "https://raw.githubusercontent.com/sonurust/mysql-workbench/master" }
 $Theme   = if ($env:THEME)    { $env:THEME }    else { "dark" }
 
 # Editing Program Files needs admin; relaunch elevated if needed.

@@ -4,21 +4,21 @@
 
 **macOS / Linux**
 ```bash
-curl -fsSL https://raw.githubusercontent.com/sonurust/mysql-workbench/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/sonurust/mysql-workbench/master/install.sh | bash
 ```
 
 **Windows (PowerShell as Administrator)**
 ```powershell
-irm https://raw.githubusercontent.com/sonurust/mysql-workbench/main/install.ps1 | iex
+irm https://raw.githubusercontent.com/sonurust/mysql-workbench/master/install.ps1 | iex
 ```
 
 ## Pick a theme
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/sonurust/mysql-workbench/main/install.sh | THEME=dracula bash
+curl -fsSL https://raw.githubusercontent.com/sonurust/mysql-workbench/master/install.sh | THEME=dracula bash
 ```
 ```powershell
-$env:THEME="dracula"; irm https://raw.githubusercontent.com/sonurust/mysql-workbench/main/install.ps1 | iex
+$env:THEME="dracula"; irm https://raw.githubusercontent.com/sonurust/mysql-workbench/master/install.ps1 | iex
 ```
 
 Default theme is `dark`.
