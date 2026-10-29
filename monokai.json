@@ -1,0 +1,16 @@
+{
+  "name": "monokai",
+  "default": "#f8f8f2",
+  "comment": "#75715e",
+  "variable": "#fd971f",
+  "sysvar": "#66d9ef",
+  "number": "#ae81ff",
+  "string": "#e6db74",
+  "keyword": "#f92672",
+  "function": "#a6e22e",
+  "operator": "#f8f8f2",
+  "identifier": "#f8f8f2",
+  "quotedIdentifier": "#fd971f",
+  "delimiter": "#66d9ef",
+  "hiddenBackground": "#3e3d32"
+}

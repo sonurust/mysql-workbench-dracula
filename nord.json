@@ -1,0 +1,16 @@
+{
+  "name": "nord",
+  "default": "#d8dee9",
+  "comment": "#616e88",
+  "variable": "#d08770",
+  "sysvar": "#8fbcbb",
+  "number": "#b48ead",
+  "string": "#a3be8c",
+  "keyword": "#81a1c1",
+  "function": "#88c0d0",
+  "operator": "#eceff4",
+  "identifier": "#d8dee9",
+  "quotedIdentifier": "#ebcb8b",
+  "delimiter": "#b48ead",
+  "hiddenBackground": "#3b4252"
+}

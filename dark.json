@@ -1,0 +1,16 @@
+{
+  "name": "dark",
+  "default": "#d4d4d4",
+  "comment": "#6a9955",
+  "variable": "#9cdcfe",
+  "sysvar": "#4fc1ff",
+  "number": "#b5cea8",
+  "string": "#ce9178",
+  "keyword": "#569cd6",
+  "function": "#dcdcaa",
+  "operator": "#d4d4d4",
+  "identifier": "#e6e6e6",
+  "quotedIdentifier": "#d7ba7d",
+  "delimiter": "#c586c0",
+  "hiddenBackground": "#2d2d30"
+}

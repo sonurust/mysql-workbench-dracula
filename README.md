@@ -2,17 +2,18 @@
 
 ## Install (latest version)
 
-**macOS / Linux**
+macOS / Linux:
 ```bash
 curl -fsSL https://raw.githubusercontent.com/sonurust/mysql-workbench/master/install.sh | bash
 ```
-
-**Windows (PowerShell as Administrator)**
+Windows (PowerShell **as Administrator**):
 ```powershell
 irm https://raw.githubusercontent.com/sonurust/mysql-workbench/master/install.ps1 | iex
 ```
 
-## Pick a theme
+## Pick a theme (default: dark)
+
+Available: `dark`, `dracula`, `monokai`, `nord`
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/sonurust/mysql-workbench/master/install.sh | THEME=dracula bash
@@ -21,25 +22,22 @@ curl -fsSL https://raw.githubusercontent.com/sonurust/mysql-workbench/master/ins
 $env:THEME="dracula"; irm https://raw.githubusercontent.com/sonurust/mysql-workbench/master/install.ps1 | iex
 ```
 
-Default theme is `dark`.
+Themes recolor the SQL editor's **dark-mode** syntax colors, so Workbench must be in its dark mode.
+Re-run the installer after a Workbench upgrade (the MSI replaces the patched file).
 
-## Add a new theme
+## Add a theme
 
-1. Create `themes/<name>/code_editor.xml` (copy the original from your Workbench
-   `data/` folder, then change the colors).
-2. Commit and push. Users run the install command with `THEME=<name>`.
+Copy `themes/dark.json` to `themes/<name>.json`, change the hex colors, push. Done.
+Keys: default, comment, variable, sysvar, number, string, keyword, function, operator,
+identifier, quotedIdentifier, delimiter, hiddenBackground.
 
-## Restore the original
+## Restore original
 
-The installer saves `code_editor.xml.orig` next to the file it replaces. Copy it back to undo.
+Copy `code_editor.xml.orig` over `code_editor.xml` in the Workbench `data` folder.
 
 ## Layout
-
 ```
-install.sh
-install.ps1
-themes/
-  dark/code_editor.xml
-  dracula/code_editor.xml
-  ...
+install.sh  install.ps1
+tools/apply_theme.py      (used by install.sh on macOS)
+themes/*.json
 ```
