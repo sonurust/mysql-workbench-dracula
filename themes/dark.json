@@ -12,5 +12,7 @@
   "identifier": "#e6e6e6",
   "quotedIdentifier": "#d7ba7d",
   "delimiter": "#c586c0",
-  "hiddenBackground": "#2d2d30"
+  "hiddenBackground": "#2d2d30",
+  "background": "#1e1e1e",
+  "lineNumber": "#858585"
 }

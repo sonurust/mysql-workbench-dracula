@@ -1,0 +1,19 @@
+{
+  "name": "tokyonight",
+  "background": "#1A1B26",
+  "lineNumber": "#313654",
+  "default": "#A9B1D6",
+  "comment": "#565F89",
+  "variable": "#A9B1D6",
+  "sysvar": "#8be9fd",
+  "number": "#CF845B",
+  "keyword": "#2AC3DE",
+  "majorKeyword": "#B494EE",
+  "function": "#6A8CD5",
+  "operator": "#B494EE",
+  "identifier": "#A9B1D6",
+  "quotedIdentifier": "#84AA60",
+  "string": "#84AA60",
+  "delimiter": "#529B2F",
+  "hiddenBackground": "#49483E"
+}
